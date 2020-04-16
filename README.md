@@ -14,9 +14,12 @@
 
 
 ##Migration
-php artisan migrate => To migrate tables
+    
+    php artisan migrate => To migrate tables
 
 ##Create seeder command
-php artisan make:seeder UserTableSeeder
+
+    php artisan make:seeder UserTableSeeder
 ###To seed data into database
-php artisan db:seed
+
+    php artisan db:seed

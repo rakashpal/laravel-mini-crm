@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
+    Route::get('login','UserController@index')->name('login');
+    Route::post('check_user','UserController@login');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('dashboard','DashboardController@index');
+        Route::get('logout','UserController@logout');
+    });
+});
+
