@@ -11,3 +11,12 @@
     - Use Laravel’s validation function, using Request classes
     - Use Laravel’s pagination for showing Companies/Employees list, 10 entries per page
     - Use Laravel make:auth as default Bootstrap-based design theme, but remove ability to register.
+
+
+##Migration
+php artisan migrate => To migrate tables
+
+##Create seeder command
+php artisan make:seeder UserTableSeeder
+###To seed data into database
+php artisan db:seed
