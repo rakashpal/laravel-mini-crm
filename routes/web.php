@@ -24,6 +24,8 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('dashboard','DashboardController@index');
         Route::get('logout','UserController@logout');
+        Route::resource('companies','CompanyController');
+        Route::resource('employees','EmployeeController');
     });
 });
 
