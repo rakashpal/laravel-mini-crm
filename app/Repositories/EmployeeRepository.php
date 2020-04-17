@@ -10,6 +10,13 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 
     }
     public function create(array $data){
+        return Employee::create([
+            'first_name'=>$data['first_name'],
+            'last_name'=>$data['last_name'],
+            'email'=>$data['email']??null,
+            'phone'=>$data['phone']??null,
+            'company_id'=>$data['company_id']
+        ]);
     }
     public function update(array $data, $id){
 

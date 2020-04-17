@@ -19,11 +19,11 @@
                      {!! \Session::get('error') !!}
                   </div>
                 @endif
-               <h4 class="card-title>{{$title}}</h4>
-               {{-- <a class="nav-link add_button" href="{{url('admin/brands/create')}}">
+               <h4 class="card-title">{{$title}}</h4>
+               <a class="nav-link add_button" href="{{route('employees.create')}}">
                 <i class=" icon-plus menu-icon"></i>
                 <span class="menu-title">Add</span>
-              </a> --}}
+              </a>
                <div class="table-responsive">
                   <table class="table">
                      <thead>

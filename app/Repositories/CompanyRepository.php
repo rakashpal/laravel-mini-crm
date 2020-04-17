@@ -7,9 +7,15 @@ class CompanyRepository implements  CompanyRepositoryInterface
 {
     
     public function all(){
-
+        return Company::all();
     }
     public function create(array $data){
+        return Company::create([
+            'name'=>$data['name'],
+            'email'=>$data['email']??null,
+            'website'=>$data['website']??null,
+            'logo'=>$data['logo']??null
+        ]);
     }
     public function update(array $data, $id){
 

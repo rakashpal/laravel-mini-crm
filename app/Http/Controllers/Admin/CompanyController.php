@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CompanyDataValidation;
 class CompanyController extends Controller
 {
 
@@ -32,7 +33,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        $user=Auth::user();
+        return view('admin.company.create',['user'=>$user,'title'=>'create']);
+     
     }
 
     /**
@@ -41,9 +44,16 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyDataValidation $request)
     {
-        //
+        try{
+        $comCreated=$this->company->create($request->all());
+        return response()->json(['status'=>1,'message'=>'Company ceated successfully']);
+        }catch(Execption $e){
+            return response()->json(['status'=>0,'message'=>$e->getMessage()]);
+        }
+        
+
     }
 
     /**
