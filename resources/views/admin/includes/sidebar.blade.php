@@ -12,7 +12,7 @@
                   @yield('user_name')
                   </p>
                   <p class="designation">
-                  @yield('role')
+                 Admin
                   </p>
                 </div>
               </div>
@@ -22,6 +22,18 @@
                 <i class="icon-rocket menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
                  <!--<span class="badge badge-success">New</span> -->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('companies.index')}}">
+                <i class="icon-user menu-icon"></i>
+                <span class="menu-title">Companies</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('employees.index')}}">
+                <i class="icon-user menu-icon"></i>
+                <span class="menu-title">Employees</span>
               </a>
             </li>
            

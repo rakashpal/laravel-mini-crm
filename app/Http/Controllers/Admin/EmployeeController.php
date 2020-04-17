@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 class EmployeeController extends Controller
 {
+
+    private $employee;
+    public function __construct(EmployeeRepositoryInterface $employee){
+        $this->employee=$employee;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+       $employees= $this->employee->paginate();
+       return view('admin.employee.index',['employees'=>$employees,'user'=>$user,'title'=>'Companies']);
+    
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php namespace App\Repositories;
 
-use App\Employee;
-use App\Repositories\Interfaces\EmployeeRepositoryInterface;
+use App\Company;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 
-class EmployeeRepository implements EmployeeRepositoryInterface
+class CompanyRepository implements  CompanyRepositoryInterface
 {
     
     public function all(){
@@ -20,13 +20,12 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     public function show($id){
 
     }
-
     public function paginate($per_page=10){
-        return  Employee::paginate($per_page);
+        return  Company::paginate($per_page);
     }
 
     public function count(){
-        return Employee::count();
+        return Company::count();
     }
   
 }

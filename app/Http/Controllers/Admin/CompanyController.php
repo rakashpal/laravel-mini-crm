@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
+
+    private $company;
+    public function __construct(CompanyRepositoryInterface $company){
+        $this->company=$company;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+       $companies= $this->company->paginate();
+       return view('admin.company.index',['companies'=>$companies,'user'=>$user,'title'=>'Companies']);
     }
 
     /**
