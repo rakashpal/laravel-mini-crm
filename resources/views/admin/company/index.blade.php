@@ -54,6 +54,12 @@
                             <i class=" icon-pencil menu-icon"></i>
                             <span class="menu-title"></span>
                             </a>
+                            <form method="post" action="{{route('companies.destroy',[$com->id])}}"  class="delete_form_action" >
+                              @csrf
+                              <input type="hidden" name="_method" value="DELETE">
+                             <button type="submit"> <i class=" icon-trash menu-icon"></i>
+                              <span class="menu-title"></span></button>
+                            </form>
                          </td>
                         </tr>
                         @endforeach
@@ -72,3 +78,40 @@
    </div>
 </div>
 @endsection
+
+
+@section('footerScript')
+@parent
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+  $(document).on("submit",".delete_form_action",function($e){
+    $e.preventDefault();
+ 
+var form_data = $(this).serializeArray();
+var url=$(this).attr('action');
+
+var currentObj=$(this);
+    $.ajax({
+          type:'POST',
+          url:url,
+         // data:{ "_token": "{{ csrf_token() }}"},
+         data: form_data,
+          success:function(response){
+             if(response.status==1){
+              alert(response.message);
+        //      currentObj.trigger("reset");
+        window.location.reload();
+             }else{
+              alert(response.message);
+             }       
+      }
+ });
+  });
+});
+  </script>
+  
+  
+  @endsection

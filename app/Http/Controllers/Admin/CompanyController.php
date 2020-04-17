@@ -106,6 +106,11 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $comdeleted=$this->company->delete($id);
+            return response()->json(['status'=>1,'message'=>'Company deleted successfully']);
+            }catch(Execption $e){
+                return response()->json(['status'=>0,'message'=>$e->getMessage()]);
+            }
     }
 }

@@ -26,6 +26,7 @@ class CompanyRepository implements  CompanyRepositoryInterface
         ]);
     }
     public function delete($id){
+        return Company::where('id',$id)->delete();
 
     }
     public function show($id){

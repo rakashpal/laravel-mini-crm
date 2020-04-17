@@ -28,7 +28,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         ]);
     }
     public function delete($id){
-
+        return Employee::where('id',$id)->delete();
     }
     public function show($id){
         return Employee::where('id',$id)->first();

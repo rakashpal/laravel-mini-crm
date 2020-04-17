@@ -112,6 +112,11 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $empdleted=$this->employee->delete($id);
+            return response()->json(['status'=>1,'message'=>'Employee deleted successfully']);
+            }catch(Execption $e){
+                return response()->json(['status'=>0,'message'=>$e->getMessage()]);
+            }
     }
 }
