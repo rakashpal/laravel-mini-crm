@@ -18,13 +18,18 @@ class CompanyRepository implements  CompanyRepositoryInterface
         ]);
     }
     public function update(array $data, $id){
-
+        return Company::where('id',$id)->update([
+            'name'=>$data['name'],
+            'email'=>$data['email']??null,
+            'website'=>$data['website']??null,
+            'logo'=>$data['logo']??null
+        ]);
     }
     public function delete($id){
 
     }
     public function show($id){
-
+        return Company::where('id',$id)->first();
     }
     public function paginate($per_page=10){
         return  Company::paginate($per_page);

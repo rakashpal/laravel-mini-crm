@@ -64,7 +64,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -75,7 +75,10 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Auth::user();
+        $company=$this->company->show($id);
+            return view('admin.company.edit',['user'=>$user,'title'=>'Edit','company'=>$company]);
+         
     }
 
     /**
@@ -85,9 +88,14 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyDataValidation $request, $id)
     {
-        //
+        try{
+            $comCreated=$this->company->update($request->all(),$id);
+            return response()->json(['status'=>1,'message'=>'Company updated successfully']);
+            }catch(Execption $e){
+                return response()->json(['status'=>0,'message'=>$e->getMessage()]);
+            }
     }
 
     /**

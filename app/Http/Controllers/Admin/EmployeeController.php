@@ -79,7 +79,12 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Auth::user();
+        $companies=$this->company->all();
+
+        $employee=$this->employee->show($id);
+            return view('admin.employee.edit',['user'=>$user,'title'=>'Edit','employee'=>$employee,'companies'=>$companies]);
+        
     }
 
     /**
@@ -91,7 +96,12 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $empupdated=$this->employee->update($request->all(),$id);
+            return response()->json(['status'=>1,'message'=>'Employee updated successfully']);
+            }catch(Execption $e){
+                return response()->json(['status'=>0,'message'=>$e->getMessage()]);
+            }
     }
 
     /**

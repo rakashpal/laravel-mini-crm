@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title',$title)
-@section('user_name',$user->first_name." ".$user->last_name)
+@section('user_name',$user->name)
 
 @section('content')
 <div class="content-wrapper">
@@ -50,7 +50,6 @@
                               {{@$com->website}}
                            </td>
                            <td>
-                              {{--rl('admin/company/'.$com->id.'/edit') --}}
                            <a class="action-button" href="{{route('companies.edit',[$com->id])}}" data-toggle="tooltip" title="Edit">
                             <i class=" icon-pencil menu-icon"></i>
                             <span class="menu-title"></span>
